@@ -1,4 +1,3 @@
-#%%
 import boto3
 from dotenv import load_dotenv
 import os
@@ -6,12 +5,6 @@ from pandas import DataFrame
 import pandas as pd
 import io
 
-#%%
-
-# load .env file to auth to AWS
-load_dotenv()
-
-#%%
 
 def get_session():
     """Get boto3 s3 session
@@ -29,7 +22,6 @@ def get_session():
     return s3
 
 
-#%%
 def read_s3_to_pandas_df(file_name: str) -> DataFrame:
     """Read an s3 csv into a pandas dataframe
 
@@ -49,7 +41,6 @@ def read_s3_to_pandas_df(file_name: str) -> DataFrame:
     return dataframe
 
 
-#%%
 def remove_bad_weeks(dataframe: DataFrame) -> DataFrame:
     """remove week 10 and 18 from dataframes
 
@@ -66,7 +57,7 @@ def remove_bad_weeks(dataframe: DataFrame) -> DataFrame:
 
     return dataframe
 
-#%%
+
 def process_reciever(file_name) -> DataFrame:
     """Pandas datframe
 
@@ -92,7 +83,7 @@ def process_reciever(file_name) -> DataFrame:
 
     return receiver_df
 
-#%%
+
 def get_reciever_data() -> DataFrame:
     """Get all recievers unioned as a single DataFrame
 
@@ -121,8 +112,6 @@ def get_reciever_data() -> DataFrame:
     return all_recievers
 
 
-#%%
-
 def clean_team_data(dataframe: DataFrame) -> DataFrame:
     """apply cleaning transformations to team data
 
@@ -137,7 +126,7 @@ def clean_team_data(dataframe: DataFrame) -> DataFrame:
 
     return dataframe
 
-# %%
+
 def get_team_data() -> DataFrame:
     """Get Bengals team data
 
@@ -162,3 +151,9 @@ def get_team_data() -> DataFrame:
     )
 
     return bengals_team_data
+
+
+if __name__ == '__main__':
+    load_dotenv()
+    
+    pass
