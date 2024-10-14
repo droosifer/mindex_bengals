@@ -110,6 +110,14 @@ def get_reciever_data() -> DataFrame:
     
     all_recievers = pd.concat(pandas_df_list)
 
+    all_recievers = all_recievers.pivot(index='Week', columns='player_name', values=['Yards', 'TD'])
+
+    # make columns pretty
+    all_recievers.columns = [' '.join(col).strip() for col in all_recievers.columns.values]
+
+    # fill 0 for games players havent played
+    all_recievers = all_recievers.fillna(value=0, axis=1)
+
     return all_recievers
 
 
@@ -119,9 +127,7 @@ def clean_team_data(dataframe: DataFrame) -> DataFrame:
     
     dataframe = remove_bad_weeks(dataframe)
 
-    # convert win Col
-
-    dataframe
+    return dataframe
 
 # %%
 def get_team_data() -> DataFrame:

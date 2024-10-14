@@ -1,6 +1,6 @@
 # Overview
 
-Create a pipeline for processing 2021 Bengals data for Mindex
+Create an ETL pipeline for processing 2021 Bengals data for Mindex
 
 ## Running Locally
 
