@@ -2,6 +2,16 @@
 
 Create a pipeline for processing 2021 Bengals data for Mindex
 
+## Running Locally
+
+To run locally make sure the env vars are in a `.env` file in the root of the repo.
+
+```.env
+AWS_ACCESS_KEY_ID=<your_access_key_id>
+AWS_SECRET_ACCESS_KEY=<your_access_key>
+S3_BUCKET_NAME=<s3_bucket_name>
+```
+
 ## Data Notes
 
 - bye week was week 10
