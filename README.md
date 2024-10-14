@@ -12,6 +12,8 @@ AWS_SECRET_ACCESS_KEY=<your_access_key>
 S3_BUCKET_NAME=<s3_bucket_name>
 ```
 
+More auth info can be found [here](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html)
+
 ## Data Notes
 
 - bye week was week 10
