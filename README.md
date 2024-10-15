@@ -56,6 +56,14 @@ More auth info can be found [here](https://boto3.amazonaws.com/v1/documentation/
 pytest 
 ```
 
+## SQL
+
+The SQL file is located at `sql/dbeaver_query.sql`
+
+The screenshot of installed dbeaver and the query running is at `docs/dbeaver_installation_and_query.png`
+
+Furthermore there is a function in mindex_bengals module called `run_test_query` which will read the sql file and run it against the databse and produce the aggregate results outlined in the intial request. The notebook also runs this as a final step.
+
 ## Data Notes
 
 - bye week was week 10
