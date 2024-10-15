@@ -4,6 +4,7 @@ import os
 from pandas import DataFrame
 import pandas as pd
 import io
+from sqlalchemy import create_engine
 
 
 def get_session():
@@ -23,7 +24,7 @@ def get_session():
 
 
 def read_s3_to_pandas_df(file_name: str) -> DataFrame:
-    """Read an s3 csv into a pandas dataframe
+    """Read an s3 csv into a pandas dataframe without downloading
 
     Args:
         file_name (str): filename in bucket
@@ -153,7 +154,38 @@ def get_team_data() -> DataFrame:
     return bengals_team_data
 
 
+def get_bengals_data() -> DataFrame:
+
+    team_data = get_team_data()
+
+    reciever_data = get_reciever_data()
+
+    all_data = team_data.join(other=reciever_data, on='Week', how='left')
+
+    all_data = all_data.fillna(value=0, axis=0)
+
+    return all_data
+
+
+def load_data_to_database(dataframe: DataFrame, table_name: str):
+    """Load pandas df to mindex postgres db
+
+    Args:
+        dataframe (DataFrame): pandas DataFrame
+        table_name (str): name of table to write to
+    """    
+
+    engine = create_engine(os.getenv('DB_CONNECTION_STRING'))
+
+    dataframe.to_sql(
+        name=table_name,
+        con=engine,
+        index=False,
+        if_exists='replace'
+    )
+
+
 if __name__ == '__main__':
     load_dotenv()
-    
+
     pass
