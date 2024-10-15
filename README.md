@@ -13,6 +13,8 @@ The `main.py` has logging included to inform the user which steps the pipeline a
 
 ## Running Locally
 
+python 3.12
+
 ```bash
 git clone https://github.com/droosifer/mindex_bengals.git
 ```
@@ -87,3 +89,4 @@ Tried connecting vscode extension SQL tools to preview the postgres db. I couldn
 
 - set up auto linting and formatting on commit using prehooks
 - branch protection policies 
+- add setup.py for local installation
