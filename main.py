@@ -5,7 +5,9 @@ from pandas import DataFrame
 import pandas as pd
 import io
 from sqlalchemy import create_engine
+import logging
 
+logging.getLogger().setLevel(logging.INFO)
 
 def get_session():
     """Get boto3 s3 session
@@ -181,10 +183,12 @@ def load_data_to_database(dataframe: DataFrame, table_name: str):
 
 
 if __name__ == "__main__":
+    
+    logging.info('Loading .env')
     load_dotenv()
 
+    logging.info('Getting Bengals Data')
     bengals_data = get_bengals_data()
 
+    logging.info('Loading to Database')
     load_data_to_database(bengals_data, 'drew_ringo')
-
-    pass
