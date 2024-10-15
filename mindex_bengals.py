@@ -188,7 +188,7 @@ def view_bengals_data_in_db(table_name: str) -> DataFrame:
 
     engine = create_engine(os.getenv("DB_CONNECTION_STRING"))
 
-    dataframe = pd.read_sql_table("drew_ringo", con=engine)
+    dataframe = pd.read_sql_table(table_name, con=engine)
 
     return dataframe
 
