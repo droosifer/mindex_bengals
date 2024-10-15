@@ -183,4 +183,8 @@ def load_data_to_database(dataframe: DataFrame, table_name: str):
 if __name__ == "__main__":
     load_dotenv()
 
+    bengals_data = get_bengals_data()
+
+    load_data_to_database(bengals_data, 'drew_ringo')
+
     pass
