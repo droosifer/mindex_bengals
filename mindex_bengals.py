@@ -5,6 +5,7 @@ import pandas as pd
 import io
 from sqlalchemy import create_engine
 
+
 def get_session():
     """Get boto3 s3 session
 
@@ -183,20 +184,19 @@ def view_bengals_data_in_db(table_name: str) -> DataFrame:
 
     Args:
         table_name (str): table name to preview
-    """    
+    """
 
     engine = create_engine(os.getenv("DB_CONNECTION_STRING"))
 
-    dataframe = pd.read_sql_table('drew_ringo', con=engine)
+    dataframe = pd.read_sql_table("drew_ringo", con=engine)
 
     return dataframe
 
-def run_test_query() -> DataFrame:
 
+def run_test_query() -> DataFrame:
     engine = create_engine(os.getenv("DB_CONNECTION_STRING"))
 
-    with open('./sql/dbeaver_query.sql', 'r') as query:
-        # connection == the connection to your database, in your case prob_db
-        dataframe = pd.read_sql_query(sql=query.read(),con=engine)
+    with open("./sql/dbeaver_query.sql", "r") as query:
+        dataframe = pd.read_sql_query(sql=query.read(), con=engine)
 
     return dataframe
